@@ -1,4 +1,5 @@
 import React from "react";
+import countries from "../data/countries";
 
 export default class App extends React.Component {
   constructor() {
@@ -7,7 +8,8 @@ export default class App extends React.Component {
     this.state = {
       username: "",
       password: "",
-      repeatPassword: ""
+      repeatPassword: "",
+      country: ""
     }
   }
 
@@ -22,8 +24,28 @@ export default class App extends React.Component {
     })
   };
 
+  getOptionsItems = items => {
+    return items.map(item => (
+      <option
+        key={item.id}
+        value={item.id}
+      >
+        {item.name}
+      </option>
+    ))
+  };
+
   render() {
     console.log(this);
+
+    // const getOptionsCountries = countries.map(country => (
+    //   <option
+    //     key={country.id}
+    //     value={country.id}
+    //   >
+    //     {country.name}
+    //   </option>
+    // ));
 
     return (
       <div className="form-container card">
@@ -65,6 +87,18 @@ export default class App extends React.Component {
               onChange={this.onChange}
 
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="country">Country</label>
+            <select
+              className="form-control"
+              id="country"
+              name="country"
+              value={this.state.country}
+              onChange={this.onChange}
+            >
+              {this.getOptionsItems(countries)}
+            </select>
           </div>
           <button
             type="submit"
