@@ -16,21 +16,9 @@ export default class App extends React.Component {
     console.log(this.username.value, this.password.value);
   };
 
-  onChangeUsername = event => {
+  onChange = event => {
     this.setState({
-      username: event.target.value
-    })
-  };
-
-  onChangePassword = event => {
-    this.setState({
-      password: event.target.value
-    })
-  };
-
-  onChangeRepeatPassword = event => {
-    this.setState({
-      repeatPassword: event.target.value
+      [event.target.name]: event.target.value
     })
   };
 
@@ -47,8 +35,9 @@ export default class App extends React.Component {
               className="form-control"
               placeholder="Enter username"
               ref={node => (this.username = node)}
+              name="username"
               value={this.state.username}
-              onChange={this.onChangeUsername}
+              onChange={this.onChange}
             />
           </div>
           <div className="form-group">
@@ -58,8 +47,9 @@ export default class App extends React.Component {
               className="form-control"
               placeholder="Enter password"
               ref={node => (this.password = node)}
+              name="password"
               value={this.state.password}
-              onChange={this.onChangePassword}
+              onChange={this.onChange}
 
             />
           </div>
@@ -70,8 +60,9 @@ export default class App extends React.Component {
               className="form-control"
               placeholder="Enter repeat password"
               ref={node => (this.repeatPassword = node)}
+              name="repeatPassword"
               value={this.state.repeatPassword}
-              onChange={this.onChangeRepeatPassword}
+              onChange={this.onChange}
 
             />
           </div>
