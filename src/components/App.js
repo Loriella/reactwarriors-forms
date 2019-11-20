@@ -9,7 +9,8 @@ export default class App extends React.Component {
       username: "",
       password: "",
       repeatPassword: "",
-      country: ""
+      country: "",
+      gender: "male",
     }
   }
 
@@ -85,7 +86,6 @@ export default class App extends React.Component {
               name="repeatPassword"
               value={this.state.repeatPassword}
               onChange={this.onChange}
-
             />
           </div>
           <div className="form-group">
@@ -100,6 +100,37 @@ export default class App extends React.Component {
               {this.getOptionsItems(countries)}
             </select>
           </div>
+          <fieldset className="form-group">
+            <div>Gender</div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
+                checked={this.state.gender === "male"}
+                onChange={this.onChange}
+              />
+              <label className="form-check-label" htmlFor="male">
+                Male
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
+                checked={this.state.gender === "female"}
+                onChange={this.onChange}
+              />
+              <label className="form-check-label" htmlFor="female">
+                Female
+              </label>
+            </div>
+          </fieldset>
           <button
             type="submit"
             className="btn btn-primary w-100"
