@@ -11,6 +11,7 @@ export default class App extends React.Component {
       repeatPassword: "",
       country: "",
       gender: "male",
+      agree: true
     }
   }
 
@@ -22,6 +23,14 @@ export default class App extends React.Component {
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    })
+  };
+
+  onChangeAgree = event => {
+    this.setState({
+      // [event.target.name]: event.target.value
+      // [event.target.name]: event.target.value === "true" ? false : true
+      [event.target.name]: event.target.checked
     })
   };
 
@@ -131,6 +140,23 @@ export default class App extends React.Component {
               </label>
             </div>
           </fieldset>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="agree"
+              name="agree"
+              value={this.state.agree}
+              onChange={this.onChangeAgree}
+              checked={this.state.agree}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="agree"
+            >
+              Agree
+            </label>
+          </div>
           <button
             type="submit"
             className="btn btn-primary w-100"
